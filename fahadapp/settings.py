@@ -17,10 +17,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    # Project Apps (3 apps only)
-    "accounts",
-    "consultations",
-    "communication",
+    # Project Apps
+    "accounts.apps.AccountsConfig",
+    "consultations.apps.ConsultationsConfig",
+    "communication.apps.CommunicationConfig",
 ]
 
 MIDDLEWARE = [
@@ -38,10 +38,11 @@ ROOT_URLCONF = "fahadapp.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],  # مسار القوالب
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
+                "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
@@ -60,42 +61,41 @@ DATABASES = {
 }
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-# ✅ اللغة العربية
+# 🌍 اللغة والتوقيت
 LANGUAGE_CODE = "ar"
 
-# ✅ ترتيب اللغات (اختياري لكنه مفيد خصوصاً لو لاحقاً أضفت دعم لغة ثانية)
 LANGUAGES = [
     ("ar", "Arabic"),
     ("en", "English"),
 ]
 
-# ✅ التوقيت: الرياض
 TIME_ZONE = "Asia/Riyadh"
 
 USE_I18N = True
-
-# ✅ استخدام المنطقة الزمنية بشكل صحيح
 USE_TZ = True
 
-# ✅ مسار ملفات الترجمة الخاصة بك (اختياري)
+# 📁 ملفات الترجمة
 LOCALE_PATHS = [
     BASE_DIR / "locale",
 ]
 
-STATIC_URL = "static/"
+# 📦 Static files (التطوير)
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+# ✅ ضروري لتجميع الملفات (الإنتاج)
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# 📷 Media files
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

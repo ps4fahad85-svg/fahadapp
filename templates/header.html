@@ -1,0 +1,255 @@
+<header class="site-header" role="banner">
+  <div class="container">
+    <a class="brand" href="/" aria-label="العودة للرئيسية">
+      <span class="brand-mark" aria-hidden="true">♥</span>
+      <span class="brand-name">منصة الاستشارات</span>
+      <span class="brand-sub">نفسية • اجتماعية • أسرية</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="التنقل الرئيسي">
+      <a class="nav-link" href="#services">الخدمات</a>
+      <a class="nav-link" href="#how">كيف نعمل</a>
+      <a class="nav-link" href="#specialists">المستشارون</a>
+      <a class="nav-link" href="#contact">تواصل</a>
+    </nav>
+
+    <div class="actions">
+      <a class="btn btn-ghost" href="/accounts/login/">تسجيل الدخول</a>
+      <a class="btn btn-primary" href="/consultations/create/">احجز جلسة</a>
+
+      <button class="burger" id="burgerBtn" aria-label="فتح القائمة" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <a class="navm-link" href="#services">الخدمات</a>
+    <a class="navm-link" href="#how">كيف نعمل</a>
+    <a class="navm-link" href="#specialists">المستشارون</a>
+    <a class="navm-link" href="#contact">تواصل</a>
+  </div>
+</header>
+
+<style>
+  :root{
+    /* 🎨 ألوانك */
+    --c1:#9B405C; /* عنابي */
+    --c2:#E57979; /* وردي */
+    --c3:#FFE9B6; /* كريمي */
+    --c4:#A1A876; /* زيتي فاتح */
+    --c5:#516A42; /* زيتي غامق */
+
+    --bg: #fffaf1;
+    --text: #2b2b2b;
+    --muted: rgba(43,43,43,.68);
+    --border: rgba(155,64,92,.18);
+    --surface: rgba(255,255,255,.72);
+    --shadow: 0 12px 30px rgba(20,10,12,.12);
+    --radius: 16px;
+    --container: 1100px;
+  }
+
+  .site-header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: linear-gradient(180deg, rgba(255,233,182,.85), rgba(255,250,241,.72));
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .container{
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 14px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 14px;
+  }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    text-decoration:none;
+    color: var(--text);
+    min-width: 240px;
+  }
+
+  .brand-mark{
+    width: 42px;
+    height: 42px;
+    display:grid;
+    place-items:center;
+    border-radius: 14px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+    box-shadow: var(--shadow);
+    font-weight: 900;
+  }
+
+  .brand-name{
+    font-weight: 900;
+    letter-spacing: .2px;
+    font-size: 1.05rem;
+    white-space: nowrap;
+  }
+
+  .brand-sub{
+    margin-inline-start: 8px;
+    font-weight: 800;
+    font-size: .85rem;
+    color: var(--c5);
+    background: rgba(161,168,118,.22);
+    border: 1px solid rgba(81,106,66,.18);
+    padding: 6px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .nav{
+    display:flex;
+    align-items:center;
+    gap: 8px;
+    padding: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) + 8px);
+    box-shadow: 0 10px 22px rgba(20,10,12,.06);
+  }
+
+  .nav-link{
+    text-decoration:none;
+    color: var(--muted);
+    font-weight: 900;
+    padding: 10px 12px;
+    border-radius: 14px;
+    transition: .18s ease;
+  }
+
+  .nav-link:hover{
+    background: rgba(229,121,121,.14);
+    color: var(--c1);
+  }
+
+  .actions{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding: 10px 14px;
+    border-radius: 14px;
+    text-decoration:none;
+    font-weight: 900;
+    border: 1px solid transparent;
+    transition: .18s ease;
+    white-space: nowrap;
+  }
+
+  .btn-ghost{
+    color: var(--c1);
+    border-color: rgba(155,64,92,.28);
+    background: rgba(255,255,255,.65);
+  }
+  .btn-ghost:hover{
+    background: rgba(229,121,121,.14);
+  }
+
+  .btn-primary{
+    color: #fff;
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+    box-shadow: var(--shadow);
+  }
+  .btn-primary:hover{
+    transform: translateY(-1px);
+    filter: saturate(1.05);
+  }
+
+  .burger{
+    display:none;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    border: 1px solid rgba(155,64,92,.28);
+    background: rgba(255,255,255,.65);
+    cursor:pointer;
+    padding: 10px;
+  }
+  .burger span{
+    display:block;
+    height: 2px;
+    margin: 5px 0;
+    background: var(--c1);
+    border-radius: 99px;
+  }
+
+  .nav-mobile{
+    display:none;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 16px 14px;
+  }
+
+  .nav-mobile.is-open{
+    display:block;
+  }
+
+  .navm-link{
+    display:block;
+    text-decoration:none;
+    margin-top: 10px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    font-weight: 900;
+    color: var(--c1);
+    background: rgba(255,255,255,.75);
+    border: 1px solid rgba(155,64,92,.20);
+  }
+  .navm-link:hover{
+    background: rgba(255,233,182,.9);
+  }
+
+  @media (max-width: 980px){
+    .nav{ display:none; }
+    .burger{ display:block; }
+    .brand-sub{ display:none; }
+  }
+</style>
+
+<script>
+  (function(){
+    const btn = document.getElementById('burgerBtn');
+    const mobile = document.getElementById('navMobile');
+    if(!btn || !mobile) return;
+
+    function closeMenu(){
+      mobile.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+      mobile.setAttribute('aria-hidden', 'true');
+    }
+
+    btn.addEventListener('click', () => {
+      const open = mobile.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      mobile.setAttribute('aria-hidden', open ? 'false' : 'true');
+    });
+
+    // إغلاق عند الضغط خارج القائمة في الشاشات الصغيرة
+    document.addEventListener('click', (e) => {
+      const isMobile = window.matchMedia('(max-width: 980px)').matches;
+      if(!isMobile) return;
+      if(!mobile.classList.contains('is-open')) return;
+      if(!mobile.contains(e.target) && !btn.contains(e.target)) closeMenu();
+    });
+
+    // إغلاق عند الضغط على رابط
+    mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  })();
+</script>

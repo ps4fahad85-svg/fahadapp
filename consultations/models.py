@@ -8,82 +8,162 @@ class Availability(models.Model):
     """
     أوقات توفر المستشار
     """
+
+    DAYS_OF_WEEK = [
+    (0, "الأحد"),
+    (1, "الاثنين"),
+    (2, "الثلاثاء"),
+    (3, "الأربعاء"),
+    (4, "الخميس"),
+    (5, "الجمعة"),
+    (6, "السبت"),
+]
+
     consultant = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="availabilities"
+        User,
+        on_delete=models.CASCADE,
+        related_name="availabilities",
+        verbose_name="المستشار",
     )
     day_of_week = models.IntegerField(
-        choices=[
-            (0, "Monday"),
-            (1, "Tuesday"),
-            (2, "Wednesday"),
-            (3, "Thursday"),
-            (4, "Friday"),
-            (5, "Saturday"),
-            (6, "Sunday"),
-        ]
+        choices=DAYS_OF_WEEK,
+        verbose_name="يوم الأسبوع",
     )
-    start_time = models.TimeField()
-    end_time = models.TimeField()
+    start_time = models.TimeField(
+        verbose_name="وقت البداية",
+    )
+    end_time = models.TimeField(
+        verbose_name="وقت النهاية",
+    )
+
+    class Meta:
+        verbose_name = "وقت التوفر"
+        verbose_name_plural = "أوقات التوفر"
+        ordering = ("day_of_week", "start_time")
 
     def __str__(self):
-        return f"{self.consultant} - {self.day_of_week}"
+        return f"{self.consultant} - {self.get_day_of_week_display()}"
 
 
 class Booking(models.Model):
     """
     طلب حجز جلسة
     """
+
     STATUS_CHOICES = [
-        ("pending", "Pending"),
-        ("approved", "Approved"),
-        ("rejected", "Rejected"),
-        ("cancelled", "Cancelled"),
+        ("pending", "قيد الانتظار"),
+        ("approved", "مقبول"),
+        ("rejected", "مرفوض"),
+        ("cancelled", "ملغي"),
     ]
 
     client = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="bookings"
+        User,
+        on_delete=models.CASCADE,
+        related_name="bookings",
+        verbose_name="المستفيد",
     )
     consultant = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="consultant_bookings"
+        User,
+        on_delete=models.CASCADE,
+        related_name="consultant_bookings",
+        verbose_name="المستشار",
     )
-    scheduled_at = models.DateTimeField()
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="pending")
-    created_at = models.DateTimeField(auto_now_add=True)
+    scheduled_at = models.DateTimeField(
+        verbose_name="موعد الجلسة",
+    )
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default="pending",
+        verbose_name="حالة الحجز",
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="تاريخ الإنشاء",
+    )
+
+    class Meta:
+        verbose_name = "حجز"
+        verbose_name_plural = "الحجوزات"
+        ordering = ("-created_at",)
 
     def __str__(self):
-        return f"Booking #{self.id} - {self.status}"
+        return f"حجز رقم {self.id} - {self.get_status_display()}"
 
 
 class Session(models.Model):
     """
     الجلسة الفعلية بعد الموافقة
     """
+
     SESSION_STATUS = [
-        ("scheduled", "Scheduled"),
-        ("completed", "Completed"),
-        ("no_show", "No Show"),
-        ("cancelled", "Cancelled"),
+        ("scheduled", "مجدولة"),
+        ("completed", "مكتملة"),
+        ("no_show", "لم يحضر"),
+        ("cancelled", "ملغاة"),
     ]
 
-    booking = models.OneToOneField(Booking, on_delete=models.CASCADE)
-    started_at = models.DateTimeField(null=True, blank=True)
-    ended_at = models.DateTimeField(null=True, blank=True)
+    booking = models.OneToOneField(
+        Booking,
+        on_delete=models.CASCADE,
+        verbose_name="الحجز",
+        related_name="session",
+    )
+    started_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        verbose_name="وقت البدء",
+    )
+    ended_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        verbose_name="وقت الانتهاء",
+    )
     status = models.CharField(
-        max_length=20, choices=SESSION_STATUS, default="scheduled"
+        max_length=20,
+        choices=SESSION_STATUS,
+        default="scheduled",
+        verbose_name="حالة الجلسة",
     )
 
+    class Meta:
+        verbose_name = "جلسة"
+        verbose_name_plural = "الجلسات"
+
     def __str__(self):
-        return f"Session for Booking #{self.booking.id}"
+        return f"جلسة - حجز رقم {self.booking.id}"
 
 
 class SessionNote(models.Model):
     """
     ملاحظات الجلسة (خاصة بالمستشار)
     """
-    session = models.ForeignKey(Session, on_delete=models.CASCADE)
-    consultant = models.ForeignKey(User, on_delete=models.CASCADE)
-    note = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+
+    session = models.ForeignKey(
+        Session,
+        on_delete=models.CASCADE,
+        related_name="notes",
+        verbose_name="الجلسة",
+    )
+    consultant = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="session_notes",
+        verbose_name="المستشار",
+    )
+    note = models.TextField(
+        verbose_name="الملاحظة",
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="تاريخ الإنشاء",
+    )
+
+    class Meta:
+        verbose_name = "ملاحظة جلسة"
+        verbose_name_plural = "ملاحظات الجلسات"
+        ordering = ("-created_at",)
 
     def __str__(self):
-        return f"Note - Session #{self.session.id}"
+        return f"ملاحظة - جلسة رقم {self.session.id}"

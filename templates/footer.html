@@ -1,0 +1,211 @@
+<footer class="site-footer" id="contact">
+  <div class="container">
+    <div class="top">
+      <div class="col">
+        <div class="brandline">
+          <span class="mark" aria-hidden="true">♥</span>
+          <div>
+            <div class="title">منصة الاستشارات</div>
+            <div class="subtitle">دعم نفسي • اجتماعي • أسري بسرية واحتراف</div>
+          </div>
+        </div>
+
+        <p class="desc">
+          نؤمن أن الاستشارة رحلة آمنة ومريحة. هدفنا تقديم تجربة حجز سهلة، متابعة واضحة، وتواصل محترم يحفظ الخصوصية.
+        </p>
+
+        <div class="chips">
+          <span class="chip">سرية</span>
+          <span class="chip">متخصصون</span>
+          <span class="chip">مواعيد مرنة</span>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="head">روابط سريعة</div>
+        <a class="link" href="#services">الخدمات</a>
+        <a class="link" href="#how">كيف نعمل</a>
+        <a class="link" href="#specialists">المستشارون</a>
+        <a class="link" href="/accounts/login/">تسجيل الدخول</a>
+      </div>
+
+      <div class="col">
+        <div class="head">تواصل</div>
+        <a class="link" href="mailto:support@example.com">support@example.com</a>
+        <a class="link" href="tel:+966500000000">+966 50 000 0000</a>
+
+        <div class="social">
+          <a class="sbtn" href="#" aria-label="X">X</a>
+          <a class="sbtn" href="#" aria-label="LinkedIn">in</a>
+          <a class="sbtn" href="#" aria-label="GitHub">GH</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <span>© <span id="yearNow"></span> منصة الاستشارات — جميع الحقوق محفوظة</span>
+      <span class="mini">سياسة الخصوصية • الشروط والأحكام</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  :root{
+    --c1:#9B405C;
+    --c2:#E57979;
+    --c3:#FFE9B6;
+    --c4:#A1A876;
+    --c5:#516A42;
+
+    --text: #2b2b2b;
+    --muted: rgba(43,43,43,.70);
+    --border: rgba(155,64,92,.18);
+    --surface: rgba(255,255,255,.72);
+    --shadow: 0 12px 30px rgba(20,10,12,.12);
+    --radius: 18px;
+    --container: 1100px;
+  }
+
+  .site-footer{
+    margin-top: 60px;
+    background:
+      radial-gradient(900px 280px at 15% 0%, rgba(229,121,121,.26), transparent 60%),
+      radial-gradient(900px 280px at 85% 0%, rgba(161,168,118,.26), transparent 60%),
+      linear-gradient(180deg, rgba(255,233,182,.65), rgba(255,250,241,1));
+    border-top: 1px solid var(--border);
+  }
+
+  .container{
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 28px 16px;
+  }
+
+  .top{
+    display:grid;
+    grid-template-columns: 1.4fr .8fr .8fr;
+    gap: 14px;
+    padding: 18px;
+    border-radius: 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 22px rgba(20,10,12,.06);
+  }
+
+  .brandline{
+    display:flex;
+    gap: 10px;
+    align-items:center;
+  }
+
+  .mark{
+    width: 42px;
+    height: 42px;
+    display:grid;
+    place-items:center;
+    border-radius: 14px;
+    color:#fff;
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+    box-shadow: var(--shadow);
+    font-weight: 900;
+  }
+
+  .title{
+    font-weight: 1000;
+    color: var(--text);
+    letter-spacing: .2px;
+  }
+  .subtitle{
+    color: var(--c5);
+    font-weight: 900;
+    font-size: .9rem;
+  }
+
+  .desc{
+    margin: 12px 0 0;
+    color: var(--muted);
+    line-height: 1.8;
+    font-weight: 700;
+  }
+
+  .chips{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .chip{
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(81,106,66,.18);
+    background: rgba(161,168,118,.18);
+    color: var(--c5);
+    font-weight: 1000;
+    font-size: .9rem;
+  }
+
+  .head{
+    font-weight: 1000;
+    color: var(--c1);
+    margin-bottom: 10px;
+  }
+
+  .link{
+    display:block;
+    text-decoration:none;
+    padding: 10px 12px;
+    border-radius: 14px;
+    color: var(--muted);
+    font-weight: 900;
+    border: 1px solid transparent;
+    transition: .18s ease;
+  }
+  .link:hover{
+    background: rgba(229,121,121,.14);
+    border-color: rgba(155,64,92,.16);
+    color: var(--c1);
+  }
+
+  .social{
+    display:flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .sbtn{
+    min-width: 44px;
+    text-align:center;
+    text-decoration:none;
+    padding: 9px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(155,64,92,.18);
+    background: rgba(255,255,255,.72);
+    color: var(--c1);
+    font-weight: 1000;
+  }
+
+  .bottom{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    gap: 12px;
+    margin-top: 14px;
+    color: var(--muted);
+    font-weight: 800;
+    font-size: .92rem;
+    padding: 0 4px;
+  }
+  .mini{ opacity: .85; }
+
+  @media (max-width: 980px){
+    .top{ grid-template-columns: 1fr; }
+    .bottom{ flex-direction: column; align-items:flex-start; }
+  }
+</style>
+
+<script>
+  (function(){
+    const el = document.getElementById('yearNow');
+    if(el) el.textContent = String(new Date().getFullYear());
+  })();
+</script>
