@@ -1,454 +1,316 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>منصة الاستشارات | الرئيسية</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>منصة ملاذ | رحلتك نحو الاتزان النفسي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Palette: Deep Teal & Serene Lavender */
+            --primary: #2D5A5E; /* أخضر مزرق عميق - ثقة */
+            --primary-light: #E9F2F2;
+            --accent: #7C5EB1; /* بنفسجي هادئ - روحانيات ودعم */
+            --text-main: #1F2937;
+            --text-muted: #6B7280;
+            --bg-body: #F9FAFB;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 80px 0 60px;
+            background: radial-gradient(circle at top left, #f0fdfa 0%, #f9fafb 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -10%; left: -10%;
+            width: 400px; height: 400px;
+            background: var(--primary-light);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tag-badge {
+            display: inline-flex;
+            padding: 6px 16px;
+            background: var(--white);
+            border: 1px solid var(--primary-light);
+            border-radius: 100px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            line-height: 1.2;
+            color: var(--primary);
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            max-width: 540px;
+        }
+
+        /* --- Booking Card --- */
+        .booking-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title::before {
+            content: "";
+            width: 4px; height: 24px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .input-group { margin-bottom: 24px; }
+        .label-text {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .type-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .type-opt {
+            border: 1px solid #E5E7EB;
+            background: var(--white);
+            padding: 12px 8px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            text-align: center;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .type-opt:hover { border-color: var(--accent); color: var(--accent); }
+        .type-opt.active {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        .btn-full {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-full:hover { background: #1f4043; transform: translateY(-2px); }
+
+        /* --- Services Section --- */
+        .section-padding { padding: 100px 0; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.2rem; color: var(--primary); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-box {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            border-bottom: 4px solid transparent;
+            transition: 0.3s;
+        }
+
+        .service-box:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .icon-circle {
+            width: 60px; height: 60px;
+            background: var(--primary-light);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-desc { margin: 0 auto 32px; }
+            .tag-badge { justify-content: center; }
+        }
+    </style>
 </head>
 <body>
-  {% include "header.html" %}
 
-  <main class="page">
-    <section class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="copy">
-            <div class="tag">بيئة آمنة • دعم محترف • سرية</div>
-            <h1>استشارة نفسية واجتماعية وأسرية… بسهولة وخصوصية</h1>
-            <p>
-              احجز جلستك مع مختصين، تابع حالة الطلب، وابدأ رحلة التحسن بخطوات واضحة وتجربة مريحة.
-            </p>
+    {% include "header.html" %}
 
-            <div class="actions">
-              <a class="btn btn-primary" href="/consultations/create/">احجز جلسة الآن</a>
-              <a class="btn btn-ghost" href="#how">كيف تتم الاستشارة؟</a>
-            </div>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="tag-badge">✨ منصة مرخصة ومعتمدة</div>
+                        <h1>أنت تستحق أن تكون <br><span style="color: var(--accent);">بخير دائماً.</span></h1>
+                        <p class="hero-desc">
+                            نقدم لك جسراً آمناً من الخصوصية والاحترافية لتجاوز تحدياتك النفسية والاجتماعية مع نخبة من المستشارين المعتمدين.
+                        </p>
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                            <a href="#how" style="color: var(--primary); font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                                <span>كيف نبدأ؟</span>
+                                <span>←</span>
+                            </a>
+                        </div>
+                    </div>
 
-            <div class="trust">
-              <div class="titem"><span>✓</span> سرية وخصوصية</div>
-              <div class="titem"><span>✓</span> مواعيد مرنة</div>
-              <div class="titem"><span>✓</span> مختصون معتمدون</div>
-            </div>
-          </div>
+                    <div class="hero-form">
+                        <div class="booking-card">
+                            <div class="card-title">احجز جلستك الأولى</div>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">اختر مسار الاستشارة المناسب لك</p>
+                            
+                            <form action="/consultations/create/" method="GET">
+                                <div class="input-group">
+                                    <span class="label-text">نوع التخصص</span>
+                                    <div class="type-selector">
+                                        <div class="type-opt active" data-val="psy">نفسية</div>
+                                        <div class="type-opt" data-val="soc">اجتماعية</div>
+                                        <div class="type-opt" data-val="fam">أسرية</div>
+                                    </div>
+                                    <input type="hidden" name="type" id="consultation_type" value="psy">
+                                </div>
 
-          <div class="panel">
-            <div class="card">
-              <div class="card-top">
-                <div class="pill">جلسة جديدة</div>
-                <div class="hint">اختر التخصص ثم الوقت</div>
-              </div>
+                                <div class="input-group">
+                                    <span class="label-text">ما الذي تشعر به؟ (اختياري)</span>
+                                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                        <span class="tag-badge" style="cursor: pointer; margin-bottom: 0;">تغيّر مزاج</span>
+                                        <span class="tag-badge" style="cursor: pointer; margin-bottom: 0;">قلق</span>
+                                        <span class="tag-badge" style="cursor: pointer; margin-bottom: 0;">علاقات</span>
+                                    </div>
+                                </div>
 
-              <div class="card-body">
-                <div class="field">
-                  <label>نوع الاستشارة</label>
-                  <div class="select">
-                    <button type="button" class="opt active" data-type="psy">نفسية</button>
-                    <button type="button" class="opt" data-type="soc">اجتماعية</button>
-                    <button type="button" class="opt" data-type="fam">أسرية</button>
-                  </div>
+                                <button type="submit" class="btn-full">استمرار الحجز</button>
+                                <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 15px;">
+                                    🔒 بياناتك مشفرة ومحمية بالكامل
+                                </p>
+                            </form>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="field">
-                  <label>نقاط سريعة</label>
-                  <div class="chips">
-                    <span class="chip">قلق</span>
-                    <span class="chip">تواصل</span>
-                    <span class="chip">مشاكل أسرية</span>
-                  </div>
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>تخصصاتنا الاستشارية</h2>
+                    <p style="color: var(--text-muted);">نغطي كافة جوانب حياتك لضمان استقرارك النفسي والأسري</p>
                 </div>
-
-                <a class="btn btn-primary block" href="/consultations/create/">متابعة الحجز</a>
-                <p class="note">لن نعرض أي بيانات حساسة في الصفحة العامة.</p>
-              </div>
+                <div class="services-grid">
+                    <div class="service-box">
+                        <div class="icon-circle">🧠</div>
+                        <h3>الاستشارات النفسية</h3>
+                        <p>جلسات تخصصية لعلاج الاكتئاب، القلق، ونوبات الهلع تحت إشراف أطباء ومعالجين مرخصين.</p>
+                    </div>
+                    <div class="service-box">
+                        <div class="icon-circle">👥</div>
+                        <h3>الاستشارات الاجتماعية</h3>
+                        <p>تطوير مهارات التواصل، بناء الثقة بالنفس، وإدارة العلاقات في بيئة العمل والمجتمع.</p>
+                    </div>
+                    <div class="service-box">
+                        <div class="icon-circle">🏠</div>
+                        <h3>الاستشارات الأسرية</h3>
+                        <p>حل النزاعات الزوجية، إرشاد ما قبل الزواج، وأساليب التربية الحديثة للأبناء.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
+    </main>
 
-    <section class="section" id="services">
-      <div class="container">
-        <h2>الخدمات</h2>
-        <div class="grid">
-          <div class="box">
-            <h3>استشارات نفسية</h3>
-            <p>دعم للقلق، التوتر، الضغوط، وتحسين جودة الحياة.</p>
-          </div>
-          <div class="box">
-            <h3>استشارات اجتماعية</h3>
-            <p>حل تحديات العلاقات، التواصل، وإدارة المواقف اليومية.</p>
-          </div>
-          <div class="box">
-            <h3>استشارات أسرية</h3>
-            <p>تنظيم العلاقة الأسرية، التربية، وحل الخلافات باحترام.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    {% include "footer.html" %}
 
-    <section class="section" id="how">
-      <div class="container">
-        <h2>كيف نعمل؟</h2>
-        <ol class="steps">
-          <li><span>1</span> اختر نوع الاستشارة والمختص.</li>
-          <li><span>2</span> حدد الوقت وأرسل الطلب.</li>
-          <li><span>3</span> تصلك رسالة التأكيد وتبدأ الجلسة.</li>
-        </ol>
-      </div>
-    </section>
+    <script>
+        // تفاعل اختيار النوع
+        const opts = document.querySelectorAll('.type-opt');
+        const hiddenInput = document.getElementById('consultation_type');
 
-    <section class="section" id="specialists">
-      <div class="container">
-        <h2>لماذا يثق بنا العملاء؟</h2>
-        <div class="reasons">
-          <div class="reason">
-            <div class="icon">🛡️</div>
-            <div>
-              <div class="rtitle">خصوصية</div>
-              <div class="rtext">تصميم يحترم البيانات ويقلل عرض المعلومات الحساسة.</div>
-            </div>
-          </div>
-          <div class="reason">
-            <div class="icon">🗓️</div>
-            <div>
-              <div class="rtitle">مرونة</div>
-              <div class="rtext">مواعيد مناسبة مع تذكيرات واضحة.</div>
-            </div>
-          </div>
-          <div class="reason">
-            <div class="icon">🤝</div>
-            <div>
-              <div class="rtitle">احتراف</div>
-              <div class="rtext">رحلة حجز بسيطة وتجربة هادئة بألوان مطمئنة.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  {% include "footer.html" %}
-
-  <style>
-    :root{
-      --c1:#9B405C;
-      --c2:#E57979;
-      --c3:#FFE9B6;
-      --c4:#A1A876;
-      --c5:#516A42;
-
-      --bg:#fffaf1;
-      --text:#2b2b2b;
-      --muted: rgba(43,43,43,.70);
-      --border: rgba(155,64,92,.18);
-      --surface: rgba(255,255,255,.72);
-      --shadow: 0 12px 30px rgba(20,10,12,.12);
-      --radius: 18px;
-      --container: 1100px;
-    }
-
-    body{
-      margin:0;
-      font-family: system-ui,-apple-system,"Segoe UI",Tahoma,Arial;
-      background:
-        radial-gradient(1100px 520px at 15% 0%, rgba(229,121,121,.28), transparent 55%),
-        radial-gradient(1100px 520px at 85% 0%, rgba(161,168,118,.28), transparent 55%),
-        linear-gradient(180deg, rgba(255,233,182,.70), rgba(255,250,241,1));
-      color: var(--text);
-    }
-
-    .container{
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-
-    .page{ min-height: 70vh; }
-
-    .hero{ padding: 44px 0 18px; }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 14px;
-      align-items: stretch;
-    }
-
-    .tag{
-      display:inline-flex;
-      gap: 8px;
-      align-items:center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(161,168,118,.22);
-      border: 1px solid rgba(81,106,66,.18);
-      color: var(--c5);
-      font-weight: 1000;
-      margin-bottom: 10px;
-    }
-
-    h1{
-      margin: 0 0 10px;
-      font-size: clamp(1.8rem, 3.2vw, 3rem);
-      line-height: 1.15;
-      letter-spacing: .2px;
-      color: var(--c1);
-    }
-
-    .copy p{
-      margin: 0 0 14px;
-      color: var(--muted);
-      line-height: 1.9;
-      font-weight: 700;
-      font-size: 1.02rem;
-    }
-
-    .actions{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 12px 14px;
-      border-radius: 14px;
-      text-decoration:none;
-      font-weight: 1000;
-      border: 1px solid transparent;
-      transition: .18s ease;
-      white-space: nowrap;
-    }
-
-    .btn-primary{
-      color:#fff;
-      background: linear-gradient(135deg, var(--c1), var(--c2));
-      box-shadow: var(--shadow);
-    }
-    .btn-primary:hover{ transform: translateY(-1px); }
-
-    .btn-ghost{
-      color: var(--c1);
-      background: rgba(255,255,255,.72);
-      border-color: rgba(155,64,92,.25);
-    }
-    .btn-ghost:hover{ background: rgba(229,121,121,.14); }
-
-    .block{ width:100%; }
-
-    .trust{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 6px;
-    }
-    .titem{
-      flex: 1 1 180px;
-      padding: 12px 12px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.72);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-weight: 900;
-      display:flex;
-      gap: 10px;
-      align-items:center;
-    }
-    .titem span{
-      width: 28px; height: 28px;
-      display:grid; place-items:center;
-      border-radius: 12px;
-      background: rgba(229,121,121,.18);
-      border: 1px solid rgba(155,64,92,.18);
-      color: var(--c1);
-      font-weight: 1000;
-    }
-
-    .card{
-      height: 100%;
-      border-radius: 22px;
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(155,64,92,.20);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-
-    .card-top{
-      padding: 14px;
-      border-bottom: 1px solid rgba(155,64,92,.16);
-      display:flex;
-      justify-content: space-between;
-      align-items:center;
-      gap: 10px;
-      background: linear-gradient(90deg, rgba(255,233,182,.75), rgba(255,255,255,.3));
-    }
-    .pill{
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(229,121,121,.16);
-      border: 1px solid rgba(155,64,92,.18);
-      color: var(--c1);
-      font-weight: 1000;
-      white-space: nowrap;
-    }
-    .hint{
-      color: var(--muted);
-      font-weight: 800;
-      font-size: .92rem;
-    }
-
-    .card-body{ padding: 14px; }
-
-    .field{ margin-bottom: 14px; }
-    label{
-      display:block;
-      margin-bottom: 8px;
-      font-weight: 1000;
-      color: var(--c5);
-    }
-
-    .select{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .opt{
-      border: 1px solid rgba(155,64,92,.20);
-      background: rgba(255,255,255,.78);
-      color: var(--c1);
-      font-weight: 1000;
-      padding: 10px 12px;
-      border-radius: 14px;
-      cursor:pointer;
-      transition: .18s ease;
-    }
-    .opt:hover{ background: rgba(255,233,182,.85); }
-    .opt.active{
-      background: rgba(229,121,121,.16);
-      border-color: rgba(155,64,92,.28);
-    }
-
-    .chips{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .chip{
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(161,168,118,.20);
-      border: 1px solid rgba(81,106,66,.18);
-      color: var(--c5);
-      font-weight: 1000;
-      font-size: .9rem;
-    }
-
-    .note{
-      margin: 10px 0 0;
-      color: rgba(43,43,43,.60);
-      font-weight: 800;
-      font-size: .9rem;
-      line-height: 1.7;
-    }
-
-    .section{ padding: 26px 0; }
-    h2{
-      margin: 0 0 14px;
-      color: var(--c1);
-      font-weight: 1100;
-      letter-spacing: .2px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .box{
-      padding: 16px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(155,64,92,.18);
-      box-shadow: 0 10px 22px rgba(20,10,12,.06);
-    }
-    .box h3{ margin: 0 0 8px; color: var(--c5); }
-    .box p{ margin:0; color: var(--muted); line-height: 1.85; font-weight: 700; }
-
-    .steps{
-      list-style:none;
-      padding:0;
-      margin:0;
-      display:grid;
-      gap: 10px;
-    }
-    .steps li{
-      padding: 14px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(155,64,92,.18);
-      color: var(--muted);
-      font-weight: 900;
-      display:flex;
-      gap: 10px;
-      align-items:center;
-    }
-    .steps span{
-      width: 30px; height: 30px;
-      display:grid; place-items:center;
-      border-radius: 12px;
-      background: rgba(229,121,121,.18);
-      border: 1px solid rgba(155,64,92,.18);
-      color: var(--c1);
-      font-weight: 1100;
-    }
-
-    .reasons{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    .reason{
-      display:flex;
-      gap: 12px;
-      align-items:flex-start;
-      padding: 16px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(155,64,92,.18);
-    }
-    .icon{
-      width: 42px; height: 42px;
-      display:grid; place-items:center;
-      border-radius: 16px;
-      background: rgba(161,168,118,.22);
-      border: 1px solid rgba(81,106,66,.18);
-      font-size: 1.2rem;
-    }
-    .rtitle{ font-weight: 1100; color: var(--c5); }
-    .rtext{ color: var(--muted); font-weight: 700; line-height: 1.8; margin-top: 4px; }
-
-    @media (max-width: 980px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .grid{ grid-template-columns: 1fr; }
-      .reasons{ grid-template-columns: 1fr; }
-    }
-  </style>
-
-  <script>
-    (function(){
-      // تفعيل اختيار نوع الاستشارة داخل البطاقة
-      const buttons = document.querySelectorAll('.opt');
-      buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          buttons.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
+        opts.forEach(opt => {
+            opt.addEventListener('click', () => {
+                opts.forEach(o => o.classList.remove('active'));
+                opt.classList.add('active');
+                hiddenInput.value = opt.dataset.val;
+            });
         });
-      });
-    })();
-  </script>
+    </script>
 </body>
 </html>

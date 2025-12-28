@@ -1,211 +1,250 @@
 <footer class="site-footer" id="contact">
-  <div class="container">
-    <div class="top">
-      <div class="col">
-        <div class="brandline">
-          <span class="mark" aria-hidden="true">♥</span>
-          <div>
-            <div class="title">منصة الاستشارات</div>
-            <div class="subtitle">دعم نفسي • اجتماعي • أسري بسرية واحتراف</div>
-          </div>
+    <div class="container">
+        <div class="footer-main-grid">
+            <div class="footer-col brand-col">
+                <div class="footer-logo">
+                    <div class="logo-icon">M</div>
+                    <div class="logo-text">
+                        <span class="main-title">منصة ملاذ</span>
+                        <span class="tagline">نسمعك، لنتجاوز معاً.</span>
+                    </div>
+                </div>
+                <p class="footer-desc">
+                    منصة متخصصة في تقديم الاستشارات النفسية والاجتماعية والأسرية عبر بيئة رقمية آمنة، تضمن لك أعلى معايير السرية والاحترافية بلمسة إنسانية.
+                </p>
+                <div class="trust-indicators">
+                    <img src="https://img.icons8.com/ios-filled/50/2D5A5E/shield.png" alt="Privacy" width="20">
+                    <span>بياناتك مشفرة بالكامل</span>
+                </div>
+            </div>
+
+            <div class="footer-col links-col">
+                <h4 class="footer-title">عن المنصة</h4>
+                <nav class="footer-nav">
+                    <a href="#services">خدماتنا</a>
+                    <a href="#how">كيفية العمل</a>
+                    <a href="#specialists">المستشارون</a>
+                    <a href="/faq/">الأسئلة الشائعة</a>
+                </nav>
+            </div>
+
+            <div class="footer-col links-col">
+                <h4 class="footer-title">الدعم والمساعدة</h4>
+                <nav class="footer-nav">
+                    <a href="/privacy/">سياسة الخصوصية</a>
+                    <a href="/terms/">شروط الاستخدام</a>
+                    <a href="mailto:support@malath.com" class="contact-link">
+                        <i>📧</i> support@malath.com
+                    </a>
+                    <a href="tel:+966500000000" class="contact-link">
+                        <i>📞</i> +966 50 000 0000
+                    </a>
+                </nav>
+            </div>
+
+            <div class="footer-col social-col">
+                <h4 class="footer-title">تابعنا</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">كن قريباً من نصائحنا اليومية</p>
+                <div class="social-grid">
+                    <a href="#" class="social-icon" aria-label="Twitter">𝕏</a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
+                    <a href="#" class="social-icon" aria-label="Instagram">ig</a>
+                </div>
+            </div>
         </div>
 
-        <p class="desc">
-          نؤمن أن الاستشارة رحلة آمنة ومريحة. هدفنا تقديم تجربة حجز سهلة، متابعة واضحة، وتواصل محترم يحفظ الخصوصية.
-        </p>
-
-        <div class="chips">
-          <span class="chip">سرية</span>
-          <span class="chip">متخصصون</span>
-          <span class="chip">مواعيد مرنة</span>
+        <div class="footer-bottom">
+            <p>© <span id="yearNow"></span> منصة ملاذ للاستشارات. جميع الحقوق محفوظة.</p>
+            <div class="payment-icons">
+                <span class="payment-badge">MADA</span>
+                <span class="payment-badge">VISA</span>
+                <span class="payment-badge">Apple Pay</span>
+            </div>
         </div>
-      </div>
-
-      <div class="col">
-        <div class="head">روابط سريعة</div>
-        <a class="link" href="#services">الخدمات</a>
-        <a class="link" href="#how">كيف نعمل</a>
-        <a class="link" href="#specialists">المستشارون</a>
-        <a class="link" href="/accounts/login/">تسجيل الدخول</a>
-      </div>
-
-      <div class="col">
-        <div class="head">تواصل</div>
-        <a class="link" href="mailto:support@example.com">support@example.com</a>
-        <a class="link" href="tel:+966500000000">+966 50 000 0000</a>
-
-        <div class="social">
-          <a class="sbtn" href="#" aria-label="X">X</a>
-          <a class="sbtn" href="#" aria-label="LinkedIn">in</a>
-          <a class="sbtn" href="#" aria-label="GitHub">GH</a>
-        </div>
-      </div>
     </div>
-
-    <div class="bottom">
-      <span>© <span id="yearNow"></span> منصة الاستشارات — جميع الحقوق محفوظة</span>
-      <span class="mini">سياسة الخصوصية • الشروط والأحكام</span>
-    </div>
-  </div>
 </footer>
 
 <style>
-  :root{
-    --c1:#9B405C;
-    --c2:#E57979;
-    --c3:#FFE9B6;
-    --c4:#A1A876;
-    --c5:#516A42;
+    :root {
+        --f-primary: #2D5A5E;
+        --f-accent: #7C5EB1;
+        --f-bg: #F0F4F4; /* خلفية تميل للأخضر المريح جداً */
+        --f-text: #374151;
+        --f-muted: #6B7280;
+    }
 
-    --text: #2b2b2b;
-    --muted: rgba(43,43,43,.70);
-    --border: rgba(155,64,92,.18);
-    --surface: rgba(255,255,255,.72);
-    --shadow: 0 12px 30px rgba(20,10,12,.12);
-    --radius: 18px;
-    --container: 1100px;
-  }
+    .site-footer {
+        background-color: var(--f-bg);
+        border-top: 1px solid rgba(45, 90, 94, 0.1);
+        padding: 80px 0 30px;
+        margin-top: 100px;
+        color: var(--f-text);
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
+    }
 
-  .site-footer{
-    margin-top: 60px;
-    background:
-      radial-gradient(900px 280px at 15% 0%, rgba(229,121,121,.26), transparent 60%),
-      radial-gradient(900px 280px at 85% 0%, rgba(161,168,118,.26), transparent 60%),
-      linear-gradient(180deg, rgba(255,233,182,.65), rgba(255,250,241,1));
-    border-top: 1px solid var(--border);
-  }
+    .footer-main-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 0.7fr 0.7fr 1fr;
+        gap: 40px;
+        margin-bottom: 60px;
+    }
 
-  .container{
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: 28px 16px;
-  }
+    /* Branding Section */
+    .logo-icon {
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(135deg, var(--f-primary), var(--f-accent));
+        color: white;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
 
-  .top{
-    display:grid;
-    grid-template-columns: 1.4fr .8fr .8fr;
-    gap: 14px;
-    padding: 18px;
-    border-radius: 22px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    box-shadow: 0 10px 22px rgba(20,10,12,.06);
-  }
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
 
-  .brandline{
-    display:flex;
-    gap: 10px;
-    align-items:center;
-  }
+    .main-title {
+        display: block;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--f-primary);
+    }
 
-  .mark{
-    width: 42px;
-    height: 42px;
-    display:grid;
-    place-items:center;
-    border-radius: 14px;
-    color:#fff;
-    background: linear-gradient(135deg, var(--c1), var(--c2));
-    box-shadow: var(--shadow);
-    font-weight: 900;
-  }
+    .tagline {
+        font-size: 0.8rem;
+        color: var(--f-accent);
+        font-weight: 500;
+    }
 
-  .title{
-    font-weight: 1000;
-    color: var(--text);
-    letter-spacing: .2px;
-  }
-  .subtitle{
-    color: var(--c5);
-    font-weight: 900;
-    font-size: .9rem;
-  }
+    .footer-desc {
+        color: var(--f-muted);
+        font-size: 0.95rem;
+        line-height: 1.8;
+        max-width: 320px;
+        margin-bottom: 20px;
+    }
 
-  .desc{
-    margin: 12px 0 0;
-    color: var(--muted);
-    line-height: 1.8;
-    font-weight: 700;
-  }
+    .trust-indicators {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        color: var(--f-primary);
+        font-weight: 600;
+    }
 
-  .chips{
-    display:flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 12px;
-  }
-  .chip{
-    padding: 8px 10px;
-    border-radius: 999px;
-    border: 1px solid rgba(81,106,66,.18);
-    background: rgba(161,168,118,.18);
-    color: var(--c5);
-    font-weight: 1000;
-    font-size: .9rem;
-  }
+    /* Links & Navigation */
+    .footer-title {
+        color: var(--f-primary);
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+        position: relative;
+    }
 
-  .head{
-    font-weight: 1000;
-    color: var(--c1);
-    margin-bottom: 10px;
-  }
+    .footer-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
 
-  .link{
-    display:block;
-    text-decoration:none;
-    padding: 10px 12px;
-    border-radius: 14px;
-    color: var(--muted);
-    font-weight: 900;
-    border: 1px solid transparent;
-    transition: .18s ease;
-  }
-  .link:hover{
-    background: rgba(229,121,121,.14);
-    border-color: rgba(155,64,92,.16);
-    color: var(--c1);
-  }
+    .footer-nav a {
+        text-decoration: none;
+        color: var(--f-muted);
+        transition: 0.3s;
+        font-size: 0.95rem;
+        width: fit-content;
+    }
 
-  .social{
-    display:flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-  }
-  .sbtn{
-    min-width: 44px;
-    text-align:center;
-    text-decoration:none;
-    padding: 9px 10px;
-    border-radius: 999px;
-    border: 1px solid rgba(155,64,92,.18);
-    background: rgba(255,255,255,.72);
-    color: var(--c1);
-    font-weight: 1000;
-  }
+    .footer-nav a:hover {
+        color: var(--f-accent);
+        transform: translateX(-5px);
+    }
 
-  .bottom{
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    gap: 12px;
-    margin-top: 14px;
-    color: var(--muted);
-    font-weight: 800;
-    font-size: .92rem;
-    padding: 0 4px;
-  }
-  .mini{ opacity: .85; }
+    .contact-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+    }
 
-  @media (max-width: 980px){
-    .top{ grid-template-columns: 1fr; }
-    .bottom{ flex-direction: column; align-items:flex-start; }
-  }
+    /* Social Section */
+    .social-grid {
+        display: flex;
+        gap: 12px;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: white;
+        display: grid;
+        place-items: center;
+        text-decoration: none;
+        color: var(--f-primary);
+        border: 1px solid #E5E7EB;
+        transition: 0.3s;
+        font-weight: bold;
+    }
+
+    .social-icon:hover {
+        background: var(--f-primary);
+        color: white;
+        transform: translateY(-3px);
+    }
+
+    /* Bottom Bar */
+    .footer-bottom {
+        padding-top: 30px;
+        border-top: 1px solid rgba(0,0,0,0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85rem;
+        color: var(--f-muted);
+    }
+
+    .payment-badge {
+        padding: 4px 10px;
+        background: white;
+        border-radius: 6px;
+        margin-right: 8px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        border: 1px solid #eee;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+        .footer-main-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 580px) {
+        .footer-main-grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .footer-logo, .trust-indicators, .social-grid, .footer-bottom {
+            justify-content: center;
+        }
+        .footer-desc { max-width: 100%; }
+        .footer-bottom { flex-direction: column; gap: 20px; }
+        .footer-nav a:hover { transform: translateY(-3px); }
+    }
 </style>
 
 <script>
-  (function(){
-    const el = document.getElementById('yearNow');
-    if(el) el.textContent = String(new Date().getFullYear());
-  })();
+    (function(){
+        const el = document.getElementById('yearNow');
+        if(el) el.textContent = String(new Date().getFullYear());
+    })();
 </script>
